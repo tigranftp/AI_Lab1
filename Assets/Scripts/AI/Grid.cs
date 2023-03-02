@@ -167,6 +167,7 @@ public class Grid : MonoBehaviour
                 if (neighbourNode.walkable && neighbourNode.Distance > currentNode.Distance + PathNode.Dist(neighbourNode, currentNode))
                 {
                     neighbourNode.ParentNode = currentNode;
+                    neighbourNode.Distance = currentNode.Distance + PathNode.Dist(neighbourNode, currentNode);
                     nodes.Enqueue(neighbourNode);
                 }
             }
@@ -219,6 +220,7 @@ public class Grid : MonoBehaviour
                 if (neighbourNode.walkable && neighbourNode.Distance > currentNode.Distance + PathNode.Dist(neighbourNode, currentNode) + PathNode.Heuristic(neighbourNode, finishNode))
                 {
                     neighbourNode.ParentNode = currentNode;
+                    neighbourNode.Distance = currentNode.Distance + PathNode.Dist(neighbourNode, currentNode);
                     neighbourNode.Distance += PathNode.Heuristic(neighbourNode, finishNode);
                     nodes.Enqueue(neighbourNode);
                 }
