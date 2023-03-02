@@ -47,7 +47,7 @@ public class PathNode : IComparable<PathNode>//: MonoBehaviour
         parentNode = parent;
         //  Вычисляем расстояние
         if (parent != null)
-            distance = parent.Distance + Vector3.Distance(body.transform.position, parent.body.transform.position);
+            distance = parent.Distance + Dist(parent, this);
         else
             distance = float.PositiveInfinity;
     }
